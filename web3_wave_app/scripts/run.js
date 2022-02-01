@@ -1,4 +1,5 @@
 const main = async () => {
+  /* get wallet addresses + call contract functions */
   const [owner, randomPerson] = await hre.ethers.getSigners()
   const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
   const waveContract = await waveContractFactory.deploy();
@@ -18,10 +19,7 @@ const main = async () => {
   waveTxn = await waveContract.connect(randomPerson).wave();
   await waveTxn.wait()
 
-
   waveCount = await waveContract.getTotalWaves();
-
-
 
 };
 
